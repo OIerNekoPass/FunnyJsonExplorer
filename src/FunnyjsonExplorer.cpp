@@ -1,7 +1,7 @@
 #include "../include/FunnyjsonExplorer.h"
 #include <fstream>
 #define rec_width 8
-//rec_width Îª¾ØÐÎÓÒ±ß±£Áô¿í¶È
+//rec_width ä¸ºçŸ©å½¢å³è¾¹ä¿ç•™å®½åº¦
 
 bool FunnyjsonExplorer::_load(std::string file){
     std::string json_info, tmp;
@@ -28,12 +28,12 @@ bool FunnyjsonExplorer::_load(std::string file){
 }
 
 Container* FunnyjsonExplorer::json_to_container(cJSON *parser){
-    char icon = (parser->child == nullptr ? leaf_icon : node_icon); // ÉèÖÃicon
-    auto node = new Container(parser->type, icon, parser->string); // ´´½¨½Úµã
+    char icon = (parser->child == nullptr ? leaf_icon : node_icon); // è®¾ç½®icon
+    auto node = new Container(parser->type, icon, parser->string); // åˆ›å»ºèŠ‚ç‚¹
 
-    // ±éÀú
+    // éåŽ†
     if (parser->child != nullptr) node->set_child(json_to_container(parser->child));
-    else{ // ÈôÎªÒ¶×Ó½Úµã
+    else{ // è‹¥ä¸ºå¶å­èŠ‚ç‚¹
         if (parser->type == 0) node->set_value("True");
         else if (parser->type == 1) node->set_value("False");
         else if (parser->type == 3) node->set_value(std::to_string(parser->valueint));
@@ -55,12 +55,12 @@ void TreeStyleFactory::show(){
 void TreeStyleFactory::dfs(Container *it){
     for(auto i: stack){
         if (i == false) printf("   ");
-        else printf("©¦  ");
+        else printf("â”‚  ");
     }
 
     stack.push_back(it->get_next() != nullptr);
-    if (stack.back()) printf("©À©¤");
-    else printf("©¸©¤");
+    if (stack.back()) printf("â”œâ”€");
+    else printf("â””â”€");
     it->draw();
     printf("\n");
 
@@ -77,9 +77,9 @@ void RectangleStyleFactory::show(){
     dfs(json_tree, 0);
 }
 void RectangleStyleFactory::get_rec_info(Container *it, int dep){
-    json_size++; // Í³¼Æjson¼üÖµ¶Ô¸öÊý ÓÃÓÚÅÐ¶ÏÉÏÏÂµ×±ß
+    json_size++; // ç»Ÿè®¡jsoné”®å€¼å¯¹ä¸ªæ•° ç”¨äºŽåˆ¤æ–­ä¸Šä¸‹åº•è¾¹
     int len = (dep + 1) * 3 + it->get_name().length() + it->get_value().length() + 1;
-    if (it->get_value().length() != 0) len += 2; // Í³¼Æ×î³¤³¤¶È£¬ÓÃÓÚÉèÖÃ¾ØÐÎ¿í¶È
+    if (it->get_value().length() != 0) len += 2; // ç»Ÿè®¡æœ€é•¿é•¿åº¦ï¼Œç”¨äºŽè®¾ç½®çŸ©å½¢å®½åº¦
 
     max_length = (len > max_length ? len : max_length);
         
@@ -88,28 +88,28 @@ void RectangleStyleFactory::get_rec_info(Container *it, int dep){
 }
 void RectangleStyleFactory::dfs(Container *it, int dep){
     int len = (dep + 1) * 3 + it->get_name().length() + it->get_value().length() + 1;
-    if (it->get_value().length() != 0) len += 2; // Í³¼Æ×î³¤³¤¶È£¬ÓÃÓÚÉèÖÃ¾ØÐÎ¿í¶È
+    if (it->get_value().length() != 0) len += 2; // ç»Ÿè®¡æœ€é•¿é•¿åº¦ï¼Œç”¨äºŽè®¾ç½®çŸ©å½¢å®½åº¦
     
     output_count ++;
     if (output_count == 1){
-        printf("©°©¤");
+        printf("â”Œâ”€");
         it->draw();
-        for (int i = len; i < max_length + rec_width; ++i) printf("©¤");
-        printf("©´\n");
+        for (int i = len; i < max_length + rec_width; ++i) printf("â”€");
+        printf("â”\n");
     }
     else if (output_count == json_size){
-        printf("©¸©¤");
-        for (int i = 0; i < dep; ++i) printf("©¤©Ø©¤");
+        printf("â””â”€");
+        for (int i = 0; i < dep; ++i) printf("â”€â”´â”€");
         it->draw();
-        for (int i = len; i < max_length + rec_width; ++i) printf("©¤");
-        printf("©¼\n");
+        for (int i = len; i < max_length + rec_width; ++i) printf("â”€");
+        printf("â”˜\n");
     }
     else{
-        for (int i = 0; i < dep; ++i) printf("©¦  ");
-        printf("©À©¤");
+        for (int i = 0; i < dep; ++i) printf("â”‚  ");
+        printf("â”œâ”€");
         it->draw();
-        for (int i = len; i < max_length + rec_width; ++i) printf("©¤");
-        printf("©È\n");
+        for (int i = len; i < max_length + rec_width; ++i) printf("â”€");
+        printf("â”¤\n");
     }
 
     if (it->get_child() != nullptr) dfs(it->get_child(), dep + 1);
