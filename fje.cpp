@@ -12,14 +12,14 @@ void usage(bool err = 1){
 }
 
 int main(int argc, char *argv[]){
-	std::string cmd;
-	bool valid = false;
+    std::string cmd;
+    bool valid = false;
     std::string file_name, style = "tree";
     char node_icon = ' ', leaf_icon = ' ';
-	
-	// get info
+    
+    // get info
     for (int i = 1; i < argc; ++i){
-    	cmd = argv[i];
+        cmd = argv[i];
         if (cmd == "-f"){
             file_name = argv[++i];
             valid = true;
@@ -43,9 +43,9 @@ int main(int argc, char *argv[]){
     
     // command have no file_name
     if (valid == false){
-    	usage();
-    	return 0;
-	}
+        usage();
+        return 0;
+    }
 
     FunnyjsonExplorer *test;
     if (style == "tree") test = new TreeStyleFactory();
