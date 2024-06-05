@@ -1,4 +1,4 @@
-#include "FunnyjsonExplorer.h"
+#include "../include/FunnyjsonExplorer.h"
 #include <fstream>
 #define rec_width 8
 //rec_width 为矩形右边保留宽度

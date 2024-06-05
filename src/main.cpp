@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdio>
-#include "FunnyjsonExplorer.h"
+#include "../include/FunnyjsonExplorer.h"
 
 void usage(bool err = 1){
     if (err) puts("ERROR: Please check your command format.");
