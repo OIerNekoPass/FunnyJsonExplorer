@@ -1,0 +1,28 @@
+{
+    "Computer Science": {
+        "Course": {
+            "elective course": "38 points",
+            "required course": "92 points"
+        },
+        "Student Number": 300,
+        "Teacher": {
+            "Professor":{
+                "Teacher A": null,
+                "Teacher B": null
+            },
+            "TA":{
+                "TA 1": null,
+                "TA 2": null,
+                "TA 3": "A Name"
+            }
+        }
+    },
+    "Software Engineering": {
+        "Student Number": 400,
+        "info":{
+            "this value is": false,
+            "that value is": true
+        },
+        "Chinese": "Èí¼þ¹¤³Ì"
+    }
+}
