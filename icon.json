@@ -1,0 +1,14 @@
+{
+    "default" : {
+        "leaf" : " ",
+        "node" : " "
+    },
+    "poke" : {
+        "leaf" : "♤",
+        "node" : "♢"
+    },
+    "tree" : {
+        "leaf" : "❦",
+        "node" : "❧"
+    }
+}

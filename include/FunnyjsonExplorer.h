@@ -2,13 +2,14 @@
 #ifndef FUNNYJSONEXPLORER_H
 #define FUNNYJSONEXPLORER_H
 #include <iostream>
+#include <cstdlib>
 #include <vector>
 #include "Container.h"
 #include "cJSON.h"
 
 class FunnyjsonExplorer{ // Abstract Factory
 private:
-    char node_icon, leaf_icon;
+    std::string node_icon, leaf_icon;
 public:
     Container *json_tree;
     virtual void show() = 0;
