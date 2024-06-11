@@ -28,7 +28,7 @@ bool FunnyjsonExplorer::_load(std::string file){
 }
 
 Container* FunnyjsonExplorer::json_to_container(cJSON *parser){
-    char icon = (parser->child == nullptr ? leaf_icon : node_icon); // 设置icon
+    std::string icon = (parser->child == nullptr ? leaf_icon : node_icon); // 设置icon
     auto node = new Container(parser->type, icon, parser->string); // 创建节点
 
     // 遍历
@@ -44,7 +44,7 @@ Container* FunnyjsonExplorer::json_to_container(cJSON *parser){
     return node;
 }
 
-void FunnyjsonExplorer::set_icon(char ni, char li){
+void FunnyjsonExplorer::set_icon(std::string ni, std::string li){
     node_icon = ni;
     leaf_icon = li;
 }
