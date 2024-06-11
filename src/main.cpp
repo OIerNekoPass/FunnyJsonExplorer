@@ -102,22 +102,22 @@ int main(int argc, char *argv[]){
         return 0;
     }
 
-    FunnyjsonExplorer *style; // 创建抽象工厂
+    FunnyjsonExplorer *style_factory; // 创建抽象工厂
 
     // 赋值为具体工厂
-    if (style == "tree") style = new TreeStyleFactory(); 
-    else if (style == "rectangle") style = new RectangleStyleFactory();
+    if (style == "tree") style_factory = new TreeStyleFactory(); 
+    else if (style == "rectangle") style_factory = new RectangleStyleFactory();
     else{
         puts("style not found");
         return 0;
     }
 
     // 设置图标 加载json文件
-    style->set_icon(node_icon, leaf_icon);
-    style->_load(file_name);
+    style_factory->set_icon(node_icon, leaf_icon);
+    style_factory->_load(file_name);
 
     // 生产产品
-    style->CreateStyle();
+    style_factory->CreateStyle();
 
     return 0;
 }
