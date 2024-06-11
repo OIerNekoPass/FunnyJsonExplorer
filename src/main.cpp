@@ -41,18 +41,18 @@ bool check_icon(std::string icon_family){
         return false;
     }
     auto node = cJSON_GetObjectItem(icons, "node");
-    if (node == NULL || node.type != 4){
+    if (node == NULL || node->type != 4){
         printf("icon family %s does not have string member \"node\" in icon.json.\n", icon_family.c_str());
         return false;
     }
     auto leaf = cJSON_GetObjectItem(icons, "leaf");
-    if (leaf == NULL || leaf.type != 4){
+    if (leaf == NULL || leaf->type != 4){
         printf("icon family %s does not have string member \"leaf\" in icon.json.\n", icon_family.c_str());
         return false;
     }
 
-    node_icon = node.valuestring;
-    leaf_icon = leaf.valuestring;
+    node_icon = node->valuestring;
+    leaf_icon = leaf->valuestring;
 
     return true;
 }
