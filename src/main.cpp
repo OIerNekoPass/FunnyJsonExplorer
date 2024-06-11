@@ -4,12 +4,13 @@
 #include "../include/FunnyjsonExplorer.h"
 
 void usage(bool err = 1){
-    if (err) puts("ERROR: Please check your command format.");
-    puts("Usage: fje -f <json file> [-s <style>] [-i <icon family>] [-h | -help]");
-    puts("<style>: 1. tree");
-    puts("         2. rectangle");
+    if (err) 
+    puts("ERROR        : Please check your command format.");
+    puts("Usage        : fje -f <json file> [-s <style>] [-i <icon family>] [-h | -help]");
+    puts("<style>      : 1. tree");
+    puts("               2. rectangle");
     puts("<icon family>: icon family name in file icon.json, use default icon family if empty.");
-    puts("-h | -help: see how to use fje.");
+    puts("-h | -help   : see how to use fje.");
     return ;
 }
 
