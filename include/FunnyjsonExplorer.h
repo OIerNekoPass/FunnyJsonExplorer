@@ -15,7 +15,7 @@ public:
     virtual void show() = 0;
     bool _load(std::string file);
     Container* json_to_container(cJSON *parser);
-    void set_icon(char ni, char li);
+    void set_icon(std::string ni, std::string li);
 };
 
 class TreeStyleFactory : public FunnyjsonExplorer{

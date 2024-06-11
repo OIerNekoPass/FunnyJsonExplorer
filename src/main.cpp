@@ -74,7 +74,7 @@ int main(int argc, char *argv[]){
         }
         else if (cmd == "-i"){
             if (!check_icon(argv[++i])){
-                printf("icon family name: %s not found in icon.json.\n");
+                printf("icon family : %s error.\n", argv[i]);
                 puts("icon family format in icon.json should be:");
                 puts("{");
                 puts("    \"<icon family name>\" : {");
