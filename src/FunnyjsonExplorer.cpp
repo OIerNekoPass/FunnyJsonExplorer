@@ -54,13 +54,13 @@ FunnyjsonExplorer* FunnyjsonExplorer::getStyleFactory(){
     return p;
 }
 
-bool StyleFactory::tryStyle(string _style){
+bool StyleFactory::tryStyle(std::string _style){
     if (_style == "tree") return true;
     else if (_style == "rectangle") return true;
     else return false;
 }
 
-StyleFactory* StyleFactory::getStyle(string _style){
+StyleFactory* StyleFactory::getStyle(std::string _style){
     if (_style == "tree"){
         TreeStyleFactory *p = new TreeStyleFactory();
         return p;
