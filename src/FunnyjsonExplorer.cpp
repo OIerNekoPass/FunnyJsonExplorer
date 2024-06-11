@@ -49,6 +49,11 @@ void FunnyjsonExplorer::set_icon(std::string ni, std::string li){
     leaf_icon = li;
 }
 
+FunnyjsonExplorer* FunnyjsonExplorer::getStyleFactory(){
+    FunnyjsonExplorer *p = new StyleFactory();
+    return p;
+}
+
 bool StyleFactory::tryStyle(string _style){
     if (_style == "tree") return true;
     else if (_style == "rectangle") return true;
@@ -57,11 +62,11 @@ bool StyleFactory::tryStyle(string _style){
 
 StyleFactory* StyleFactory::getStyle(string _style){
     if (_style == "tree"){
-        auto p = new TreeStyleFactory();
+        TreeStyleFactory *p = new TreeStyleFactory();
         return p;
     }
     else if (_style == "rectangle"){
-        auto p = new RectangleStyleFactory();
+        RectangleStyleFactory *p = new RectangleStyleFactory();
         return p;
     }
     return NULL;

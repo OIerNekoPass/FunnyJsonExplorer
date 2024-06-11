@@ -13,6 +13,7 @@ private:
 public:
     Container *json_tree;
     virtual void show() = 0;
+    FunnyjsonExplorer* getStyleFactory();
     bool _load(std::string file);
     Container* json_to_container(cJSON *parser);
     void set_icon(std::string ni, std::string li);
