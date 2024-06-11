@@ -18,7 +18,12 @@ public:
     void set_icon(std::string ni, std::string li);
 };
 
-class TreeStyleFactory : public FunnyjsonExplorer{
+class StyleFactory : public FunnyjsonExplorer{
+public:
+    virtual void show() = 0;
+};
+
+class TreeStyleFactory : public StyleFactory{
 private:
     std::vector<bool> stack;
 public:
@@ -26,7 +31,7 @@ public:
     void dfs(Container *it);
 };
 
-class RectangleStyleFactory : public FunnyjsonExplorer{
+class RectangleStyleFactory : public StyleFactory{
 private:
     int max_length, json_size, output_count;
 public:
