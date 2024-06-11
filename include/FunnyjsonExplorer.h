@@ -7,11 +7,6 @@
 #include "Container.h"
 #include "cJSON.h"
 
-class FunnyjsonExplorer{ // Abstract Factory
-public:
-    StyleFactory* getStyleFactory();
-};
-
 class StyleFactory{
 private:
     std::string node_icon, leaf_icon;
@@ -42,6 +37,11 @@ public:
     void show() override;
     void get_rec_info(Container *it, int dep);
     void dfs(Container *it, int dep);
+};
+
+class FunnyjsonExplorer{ // Abstract Factory
+public:
+    StyleFactory* getStyleFactory();
 };
 
 #endif
