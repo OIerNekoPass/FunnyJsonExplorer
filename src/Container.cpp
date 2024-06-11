@@ -29,7 +29,7 @@ void Container::set_value(std::string x){
     value = x;
 }
 void Container::draw(){
-    printf ("%c%s", icon.c_str(), name.c_str());
+    printf ("%s%s", icon.c_str(), name.c_str());
     if (type == 2 || type > 4) printf (" ");
     else printf (": %s ", value.c_str());
 }
