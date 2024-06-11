@@ -10,7 +10,7 @@ void usage(bool err = 1){
     puts("<style>      : 1. tree");
     puts("               2. rectangle");
     puts("<icon family>: icon family name in file icon.json, use default icon family if empty.");
-    puts("-h | -help   : see how to use fje.");
+    puts("[-h | -help] : see how to use fje.");
     return ;
 }
 
@@ -59,7 +59,7 @@ bool check_icon(std::string icon_family){
 }
 
 int main(int argc, char *argv[]){
-    std::string cmd;
+    std::string cmd, icons = "default";
     bool valid = false;
     std::string file_name, style = "tree";
     
@@ -74,17 +74,7 @@ int main(int argc, char *argv[]){
             style = argv[++i];
         }
         else if (cmd == "-i"){
-            if (!check_icon(argv[++i])){
-                printf("icon family : %s error.\n", argv[i]);
-                puts("icon family format in icon.json should be:");
-                puts("{");
-                puts("    \"<icon family name>\" : {");
-                puts("        \"leaf\" : \"1\",");
-                puts("        \"node\" : \"2\"");
-                puts("    }");
-                puts("}");
-                return 0;
-            }
+            icons = argv[++i];
         }
         else if (cmd == "-help" || cmd == "-h"){
             usage(0);
@@ -99,6 +89,19 @@ int main(int argc, char *argv[]){
     // command have no file_name
     if (valid == false){
         usage();
+        return 0;
+    }
+    
+    // command have invalid icon_family name
+    if (!check_icon(icons)){
+        printf("icon family : %s error.\n", argv[i]);
+        puts("icon family format in icon.json should be:");
+        puts("{");
+        puts("    \"<icon family name>\" : {");
+        puts("        \"leaf\" : \"1\",");
+        puts("        \"node\" : \"2\"");
+        puts("    }");
+        puts("}");
         return 0;
     }
 
