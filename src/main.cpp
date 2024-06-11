@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+#include <fstream>
 #include "../include/FunnyjsonExplorer.h"
 
 void usage(bool err = 1){
@@ -14,7 +15,7 @@ void usage(bool err = 1){
 
 std::string node_icon, leaf_icon;
 
-void check_icon(std::string icon_family){
+bool check_icon(std::string icon_family){
     std::string json_info, tmp;
     std::ifstream fin;
     fin.open("icon.json");
