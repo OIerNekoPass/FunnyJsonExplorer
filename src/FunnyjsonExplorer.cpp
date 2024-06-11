@@ -3,7 +3,7 @@
 #define rec_width 8
 //rec_width 为矩形右边保留宽度
 
-FunnyjsonExplorer* FunnyjsonExplorer::getStyleFactory(){
+StyleFactory* FunnyjsonExplorer::getStyleFactory(){
     StyleFactory *p = new StyleFactory();
     return p;
 }
