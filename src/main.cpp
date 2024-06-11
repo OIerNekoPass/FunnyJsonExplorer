@@ -103,12 +103,12 @@ int main(int argc, char *argv[]){
     }
 
     FunnyjsonExplorer *test;
-    if (style == "tree") test = new TreeStyleFactory();
-    else if (style == "rectangle") test = new RectangleStyleFactory();
-    else{
-        puts("style not found.");
+    test = new StyleFactory();
+    if (!test->tryStyle(style)){
+        puts("style not found");
         return 0;
     }
+    test = test->getStyle(style);
 
     test->set_icon(node_icon, leaf_icon);
     test->_load(file_name);

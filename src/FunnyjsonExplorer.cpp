@@ -49,6 +49,24 @@ void FunnyjsonExplorer::set_icon(std::string ni, std::string li){
     leaf_icon = li;
 }
 
+bool StyleFactory::tryStyle(string _style){
+    if (_style == "tree") return true;
+    else if (_style == "rectangle") return true;
+    else return false;
+}
+
+StyleFactory* StyleFactory::getStyle(string _style){
+    if (_style == "tree"){
+        auto p = new TreeStyleFactory();
+        return p;
+    }
+    else if (_style == "rectangle"){
+        auto p = new RectangleStyleFactory();
+        return p;
+    }
+    return NULL;
+}
+
 void TreeStyleFactory::show(){
     dfs(json_tree);
 }

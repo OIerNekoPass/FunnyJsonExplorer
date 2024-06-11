@@ -20,6 +20,8 @@ public:
 
 class StyleFactory : public FunnyjsonExplorer{
 public:
+    StyleFactory* getStyle(std::string _style);
+    bool tryStyle(std::string _style);
     virtual void show() = 0;
 };
 
