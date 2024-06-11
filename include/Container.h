@@ -6,11 +6,11 @@
 class Container{
 private:
     int type;
-    char icon;
+    std::string icon;
     std::string name, value;
     Container *next, *child;
 public:
-    Container(int _type, char _icon, std::string _name);
+    Container(int _type, std::string _icon, std::string _name);
     Container* get_next();
     Container* get_child();
     std::string get_value();
