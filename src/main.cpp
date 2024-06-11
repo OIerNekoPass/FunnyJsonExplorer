@@ -104,7 +104,7 @@ int main(int argc, char *argv[]){
 
     FunnyjsonExplorer *test;
     test = new FunnyjsonExplorer();
-    style_product = test->getStyleFactory();
+    auto style_product = test->getStyleFactory();
     if (!test->tryStyle(style)){
         puts("style not found");
         return 0;

@@ -8,22 +8,23 @@
 #include "cJSON.h"
 
 class FunnyjsonExplorer{ // Abstract Factory
+public:
+    StyleFactory* getStyleFactory();
+};
+
+class StyleFactory{
 private:
     std::string node_icon, leaf_icon;
 public:
     Container *json_tree;
+
     virtual void show() = 0;
-    FunnyjsonExplorer* getStyleFactory();
     bool _load(std::string file);
     Container* json_to_container(cJSON *parser);
     void set_icon(std::string ni, std::string li);
-};
 
-class StyleFactory : public FunnyjsonExplorer{
-public:
-    StyleFactory* getStyle(std::string _style);
     bool tryStyle(std::string _style);
-    virtual void show() = 0;
+    StyleFactory* getStyle(std::string _style);
 };
 
 class TreeStyleFactory : public StyleFactory{

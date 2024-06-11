@@ -3,7 +3,12 @@
 #define rec_width 8
 //rec_width 为矩形右边保留宽度
 
-bool FunnyjsonExplorer::_load(std::string file){
+FunnyjsonExplorer* FunnyjsonExplorer::getStyleFactory(){
+    StyleFactory *p = new StyleFactory();
+    return p;
+}
+
+bool StyleFactory::_load(std::string file){
     std::string json_info, tmp;
     std::ifstream fin;
     fin.open(file);
@@ -27,7 +32,7 @@ bool FunnyjsonExplorer::_load(std::string file){
     return true;
 }
 
-Container* FunnyjsonExplorer::json_to_container(cJSON *parser){
+Container* StyleFactory::json_to_container(cJSON *parser){
     std::string icon = (parser->child == nullptr ? leaf_icon : node_icon); // 设置icon
     auto node = new Container(parser->type, icon, parser->string); // 创建节点
 
@@ -44,14 +49,9 @@ Container* FunnyjsonExplorer::json_to_container(cJSON *parser){
     return node;
 }
 
-void FunnyjsonExplorer::set_icon(std::string ni, std::string li){
+void StyleFactory::set_icon(std::string ni, std::string li){
     node_icon = ni;
     leaf_icon = li;
-}
-
-FunnyjsonExplorer* FunnyjsonExplorer::getStyleFactory(){
-    FunnyjsonExplorer *p = new StyleFactory();
-    return p;
 }
 
 bool StyleFactory::tryStyle(std::string _style){
