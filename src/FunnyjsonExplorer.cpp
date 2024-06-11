@@ -3,12 +3,7 @@
 #define rec_width 8
 //rec_width 为矩形右边保留宽度
 
-StyleFactory* FunnyjsonExplorer::getStyleFactory(){
-    StyleFactory *p = new StyleFactory();
-    return p;
-}
-
-bool StyleFactory::_load(std::string file){
+bool FunnyjsonExplorer::_load(std::string file){
     std::string json_info, tmp;
     std::ifstream fin;
     fin.open(file);
@@ -32,7 +27,7 @@ bool StyleFactory::_load(std::string file){
     return true;
 }
 
-Container* StyleFactory::json_to_container(cJSON *parser){
+Container* FunnyjsonExplorer::json_to_container(cJSON *parser){
     std::string icon = (parser->child == nullptr ? leaf_icon : node_icon); // 设置icon
     auto node = new Container(parser->type, icon, parser->string); // 创建节点
 
@@ -49,32 +44,17 @@ Container* StyleFactory::json_to_container(cJSON *parser){
     return node;
 }
 
-void StyleFactory::set_icon(std::string ni, std::string li){
+void FunnyjsonExplorer::set_icon(std::string ni, std::string li){
     node_icon = ni;
     leaf_icon = li;
 }
 
-bool StyleFactory::tryStyle(std::string _style){
-    if (_style == "tree") return true;
-    else if (_style == "rectangle") return true;
-    else return false;
-}
 
-StyleFactory* StyleFactory::getStyle(std::string _style){
-    if (_style == "tree"){
-        TreeStyleFactory *p = new TreeStyleFactory();
-        return p;
-    }
-    else if (_style == "rectangle"){
-        RectangleStyleFactory *p = new RectangleStyleFactory();
-        return p;
-    }
-    return NULL;
-}
 
-void TreeStyleFactory::show(){
+void TreeStyleFactory::CreateStyle(){
     dfs(json_tree);
 }
+
 void TreeStyleFactory::dfs(Container *it){
     for(auto i: stack){
         if (i == false) printf("   ");
@@ -94,11 +74,13 @@ void TreeStyleFactory::dfs(Container *it){
 }
 
 
-void RectangleStyleFactory::show(){
+
+void RectangleStyleFactory::CreateStyle(){
     max_length = json_size = output_count = 0;
     get_rec_info(json_tree, 0);
     dfs(json_tree, 0);
 }
+
 void RectangleStyleFactory::get_rec_info(Container *it, int dep){
     json_size++; // 统计json键值对个数 用于判断上下底边
     int len = (dep + 1) * 3 + it->get_name().length() + it->get_value().length() + 1;
@@ -109,6 +91,7 @@ void RectangleStyleFactory::get_rec_info(Container *it, int dep){
     if (it->get_child() != nullptr) get_rec_info(it->get_child(), dep + 1);
     if (it->get_next() != nullptr) get_rec_info(it->get_next(), dep);
 }
+
 void RectangleStyleFactory::dfs(Container *it, int dep){
     int len = (dep + 1) * 3 + it->get_name().length() + it->get_value().length() + 1;
     if (it->get_value().length() != 0) len += 2; // 统计最长长度，用于设置矩形宽度
