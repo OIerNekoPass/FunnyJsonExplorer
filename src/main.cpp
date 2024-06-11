@@ -105,15 +105,15 @@ int main(int argc, char *argv[]){
     FunnyjsonExplorer *test;
     test = new FunnyjsonExplorer();
     auto style_product = test->getStyleFactory();
-    if (!test->tryStyle(style)){
+    if (!style_product->tryStyle(style)){
         puts("style not found");
         return 0;
     }
-    test = test->getStyle(style);
+    style_product = style_product->getStyle(style);
 
-    test->set_icon(node_icon, leaf_icon);
-    test->_load(file_name);
-    test->show();
+    style_product->set_icon(node_icon, leaf_icon);
+    style_product->_load(file_name);
+    style_product->show();
 
     return 0;
 }
