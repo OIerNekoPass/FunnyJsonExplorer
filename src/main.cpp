@@ -13,7 +13,7 @@ void usage(bool err = 1){
     return ;
 }
 
-std::string node_icon, leaf_icon;
+std::string node_icon=" ", leaf_icon=" ";
 
 bool check_icon(std::string icon_family){
     std::string json_info, tmp;
