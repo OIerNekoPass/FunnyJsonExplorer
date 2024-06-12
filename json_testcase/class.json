@@ -18,7 +18,7 @@
         }
     },
     "Software Engineering": {
-        "Student Number": 400,
+        "Student Number": 300,
         "info":{
             "this value is": false,
             "that value is": true
