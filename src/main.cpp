@@ -94,7 +94,7 @@ int main(int argc, char *argv[]){
     
     // command have invalid icon_family name
     if (!check_icon(icons)){
-        printf("icon family : %s error.\n", argv[i]);
+        printf("icon family : %s error.\n", icons.c_str());
         puts("icon family format in icon.json should be:");
         puts("{");
         puts("    \"<icon family name>\" : {");
