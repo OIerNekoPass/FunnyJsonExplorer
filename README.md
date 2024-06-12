@@ -46,8 +46,16 @@ Usage        : fje -f <json file> [-s <style>] [-i <icon family>] [-h | -help]
 <style>      : 1. tree
                2. rectangle
 <icon family>: icon family name in file icon.json, use default icon family if empty.
+[-h | -help] : see how to use fje.    
+```
+
+对于windows系统，也提供了已经编译好了的exe文件fje.exe，使用方法略有不同
+```
+Usage        : fje -f <json file> [-s <style>] [-i <icon family>] [-h | -help]
+<style>      : 1. tree
+               2. rectangle
+<icon family>: two characters for inside node and leaf node
 [-h | -help] : see how to use fje.
-    
 ```
 
 ## 配置图像族
