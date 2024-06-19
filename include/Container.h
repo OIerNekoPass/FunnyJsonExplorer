@@ -21,4 +21,14 @@ public:
     void draw();
 };
 
+class Visitor{
+private:
+    Container *p;
+public:
+    void set_contain(Container *q);
+    void set_next(Container *q);
+    void set_child(Container *_child);
+    void set_value(std::string x);
+}
+
 #endif
